@@ -5,10 +5,12 @@ namespace SpriteKind {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gift_1, function (sprite, otherSprite) {
     otherSprite.destroy(effects.ashes, 100)
     gun_index = 1
+    info.startCountdown(5)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gift_2, function (sprite, otherSprite) {
     otherSprite.destroy(effects.ashes, 100)
     gun_index = 2
+    info.startCountdown(5)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     console.log(gun_index)
@@ -136,6 +138,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     } else {
     	
     }
+})
+info.onCountdownEnd(function () {
+    gun_index = 0
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy(effects.fire, 100)
